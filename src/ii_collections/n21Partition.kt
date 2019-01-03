@@ -1,5 +1,7 @@
 package ii_collections
 
+import javax.swing.text.html.parser.Entity
+
 fun example8() {
     val numbers = listOf(1, 3, -4, 2, -11)
 
@@ -12,5 +14,10 @@ fun example8() {
 
 fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> {
     // Return customers who have more undelivered orders than delivered
-    todoCollectionTask()
+//    val customerToOrders = this.customers.map{ mapOf(it to it.orders)}
+//    return customerToOrders.sortedBy { compareValuesBy(a, b, it.size) }.get(0).keys
+    return this.customers.filter {
+        val (delivered, notdelivered) = it.orders.partition { it.isDelivered }
+        notdelivered.size > delivered.size
+    }.toSet()
 }
