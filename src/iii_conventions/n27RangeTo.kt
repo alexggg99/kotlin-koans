@@ -15,6 +15,6 @@ fun todoTask27(): Nothing = TODO(
 )
 
 fun checkInRange2(date: MyDate, first: MyDate, last: MyDate): Boolean {
-    todoTask27()
-//    return date in first..last
+//    return MyDate(first.year, first.month, first.dayOfMonth).rangeTo(last).contains(date)
+    return date in first..last
 }

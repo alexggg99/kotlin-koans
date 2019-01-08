@@ -14,3 +14,12 @@ fun MyDate.addTimeIntervals(timeInterval: TimeInterval, number: Int) = Calendar.
     }, number)
     MyDate(get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DATE))
 }
+
+operator fun MyDate.plus(timeInterval: TimeInterval) = addTimeIntervals(timeInterval, 1)
+operator fun MyDate.plus(repeatedTimeInterval: RepeatedTimeInterval) = addTimeIntervals(repeatedTimeInterval.ti, repeatedTimeInterval.n)
+
+
+operator fun DateRange.contains(date: MyDate): Boolean {
+    return date >= this.start && date <= this.endInclusive
+}
+
